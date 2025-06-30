@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Predicción IA</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card color="warning">
+    <ion-card-header>
+      Recomendación
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ recommendation }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="danger">
+    <ion-card-header>
+      Riesgo Detectado
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ risk }}</p>
+      <p>Explicación: {{ explanation }}</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Escaneo de Plagas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-button expand="block" (click)="takePhoto()">
+    Tomar Foto
+  </ion-button>
+
+  <ion-card *ngIf="photoBase64">
+    <img [src]="'data:image/jpeg;base64,' + photoBase64" alt="Foto tomada">
+    <ion-card-content>
+      <p>Simulando análisis IA: <strong>Planta sana 🌿</strong></p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

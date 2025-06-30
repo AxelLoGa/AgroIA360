@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-title class="ion-text-center">🌾 AgroIA360</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col>
+        <h2 class="ion-margin-top">Bienvenido a <strong>AgroIA360</strong> 🌿</h2>
+        <p class="ion-text-wrap">
+          Monitorea tus cultivos con <strong>IA</strong> y sensores <strong>IoT</strong> de forma inteligente y eficiente.
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-margin-top" responsive="true">
+      <ion-col size="12" size-md="6" class="ion-padding-bottom">
+        <ion-button
+          expand="block"
+          style="--background: #34A853; --color: white;"
+          [routerLink]="['../monitoring']">
+          <ion-icon name="pulse-outline" slot="start"></ion-icon>
+          Ver Monitoreo
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12" size-md="6" class="ion-padding-bottom">
+        <ion-button
+          expand="block"
+          style="--background: #4285F4; --color: white;"
+          [routerLink]="['../scan']">
+          <ion-icon name="scan-outline" slot="start"></ion-icon>
+          Escanear Planta
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12" size-md="6" class="ion-padding-bottom">
+        <ion-button
+          expand="block"
+          style="--background: #FBBC05; --color: black;"
+          [routerLink]="['../prediction']">
+          <ion-icon name="bulb-outline" slot="start"></ion-icon>
+          Ver Predicciones
+        </ion-button>
+      </ion-col>
+
+      <ion-col size="12" size-md="6">
+        <ion-button
+          expand="block"
+          style="--background: #9AA0A6; --color: white;"
+          [routerLink]="['../history']">
+          <ion-icon name="time-outline" slot="start"></ion-icon>
+          Historial
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
