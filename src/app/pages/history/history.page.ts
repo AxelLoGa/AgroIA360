@@ -17,8 +17,8 @@ export class HistoryPage {
   addIcons({ timeOutline });
 }
   history = [
-    { date: '04/06', action: 'Riego Activado', details: 'IA recomendó riego.' },
-    { date: '03/06', action: 'Sin Riego', details: 'Condiciones óptimas.' },
-    { date: '02/06', action: 'Riego Activado', details: 'Alta temperatura.' },
+    { date: '04/06', action: 'Watering Active', details: 'AI Recommended Irrigation.' },
+    { date: '03/06', action: 'Watering Off ', details: 'Optimal Conditions.' },
+    { date: '02/06', action: 'Watering Active', details: 'High Temperature.' },
   ];
 }

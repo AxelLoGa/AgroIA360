@@ -1,18 +1,21 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Escaneo de Plagas</ion-title>
+    <ion-title>Plant Scanning</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <ion-button expand="block" (click)="takePhoto()">
-    Tomar Foto
+    Take Photo
   </ion-button>
 
   <ion-card *ngIf="photoBase64">
     <img [src]="'data:image/jpeg;base64,' + photoBase64" alt="Foto tomada">
     <ion-card-content>
-      <p>Simulando análisis IA: <strong>Planta sana 🌿</strong></p>
+      <p>Analyzing: <strong>La planta presenta indicios de estrés hídrico y manchas en las hojas que podrían estar asociadas con Phytophthora, una enfermedad fúngica común en suelos húmedos</strong></p>
+      <li>Activar riego moderado para estabilizar los niveles de humedad.</li>
+      <li>Aplicar tratamiento preventivo con fungicida biológico a base de cobre o extracto de neem.</li>
+      <li>Monitorear temperatura y humedad ambiental durante las próximas 24 horas.</li>
     </ion-card-content>
   </ion-card>
 </ion-content>

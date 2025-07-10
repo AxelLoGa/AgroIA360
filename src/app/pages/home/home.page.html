@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header translucent>
   <ion-toolbar color="light">
-    <ion-title class="ion-text-center">🌾 AgroIA360</ion-title>
+    <ion-title class="ion-text-center">
+      <ion-icon name="leaf-outline" slot="start" style="margin-right: 8px;"></ion-icon>
+      AgroIA360
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,9 +11,9 @@
   <ion-grid class="ion-text-center">
     <ion-row>
       <ion-col>
-        <h2 class="ion-margin-top">Bienvenido a <strong>AgroIA360</strong> 🌿</h2>
+        <h2 class="ion-margin-top">Welcome To <strong>AgroIA360</strong> </h2>
         <p class="ion-text-wrap">
-          Monitorea tus cultivos con <strong>IA</strong> y sensores <strong>IoT</strong> de forma inteligente y eficiente.
+          Monitor your crops using<strong>AI</strong> and <strong>IoT</strong> sensors in a smart and efficiently way.
         </p>
       </ion-col>
     </ion-row>
@@ -22,7 +25,7 @@
           style="--background: #34A853; --color: white;"
           [routerLink]="['../monitoring']">
           <ion-icon name="pulse-outline" slot="start"></ion-icon>
-          Ver Monitoreo
+          View Monitoring
         </ion-button>
       </ion-col>
 
@@ -32,7 +35,7 @@
           style="--background: #4285F4; --color: white;"
           [routerLink]="['../scan']">
           <ion-icon name="scan-outline" slot="start"></ion-icon>
-          Escanear Planta
+          Scan Plant
         </ion-button>
       </ion-col>
 
@@ -42,7 +45,7 @@
           style="--background: #FBBC05; --color: black;"
           [routerLink]="['../prediction']">
           <ion-icon name="bulb-outline" slot="start"></ion-icon>
-          Ver Predicciones
+          View Predictions
         </ion-button>
       </ion-col>
 
@@ -52,7 +55,7 @@
           style="--background: #9AA0A6; --color: white;"
           [routerLink]="['../history']">
           <ion-icon name="time-outline" slot="start"></ion-icon>
-          Historial
+          History
         </ion-button>
       </ion-col>
     </ion-row>
