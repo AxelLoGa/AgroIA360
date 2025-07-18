@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent,IonCard, IonCardHeader, IonCardContent } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { homeOutline } from 'ionicons/icons';
 
@@ -10,7 +10,7 @@ import { homeOutline } from 'ionicons/icons';
   templateUrl: './prediction.page.html',
   styleUrls: ['./prediction.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCardHeader, IonCard, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardContent, IonCardHeader, IonCard, IonContent, CommonModule, FormsModule]
 })
 export class PredictionPage {
   constructor() {

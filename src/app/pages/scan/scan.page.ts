@@ -9,7 +9,7 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
   templateUrl: './scan.page.html',
   styleUrls: ['./scan.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCard, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardContent, IonCard, IonButton, IonContent, CommonModule, FormsModule]
 })
 export class ScanPage {
   photoBase64?: string;

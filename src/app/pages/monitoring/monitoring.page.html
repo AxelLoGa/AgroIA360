@@ -1,19 +1,13 @@
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>Monitoring in real time</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content class="ion-padding">
+  <div class="page-title">Monitoreo en tiempo real</div>
   <ion-card>
     <ion-card-header>
-      Sensors
+       Datos en Vivo
     </ion-card-header>
     <ion-card-content>
-      <p>Temperature Sensor: <strong>{{ temperature }} °C</strong></p>
-      <p>Moisture Sensor: <strong>{{ soilHumidity }}%</strong></p>
-      <p>pH Sensor: <strong>{{ pH }}</strong></p>
-      <p>Humidity Sensor: <strong>{{ ambientHumidity }}%</strong></p>
+      <p>Temperatura: <strong>{{ temperatura ?? 'Cargando...' }} °C</strong></p>
+      <p>Humedad Ambiental: <strong>{{ humedadSuelo ?? 'Cargando...' }}%</strong></p>
+      <p>Humedad del Suelo: <strong>{{ phSuelo ?? 'Cargando...' }}%</strong></p>
     </ion-card-content>
   </ion-card>
 </ion-content>

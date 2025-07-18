@@ -1,61 +1,30 @@
 <ion-header translucent>
-  <ion-toolbar color="light">
-    <ion-title class="ion-text-center">
-      <ion-icon name="leaf-outline" slot="start" style="margin-right: 8px;"></ion-icon>
-      AgroIA360
+  <ion-toolbar class="header-toolbar">
+    <ion-title>
+      <ion-icon name="leaf-outline" slot="start" ></ion-icon>
+      GreenUp
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="landing-content ion-padding">
   <ion-grid class="ion-text-center">
     <ion-row>
       <ion-col>
-        <h2 class="ion-margin-top">Welcome To <strong>AgroIA360</strong> </h2>
-        <p class="ion-text-wrap">
-          Monitor your crops using<strong>AI</strong> and <strong>IoT</strong> sensors in a smart and efficiently way.
+        <h2 class="title">
+          Hola <strong>{{ nombre }}</strong>, bienvenido a <strong>GreenUp</strong>
+        </h2>
+        <p class="subtitle">
+          Monitorea tus cultivos usando <strong>IA </strong> y sensores <strong>IoT</strong> de forma inteligente.
         </p>
       </ion-col>
     </ion-row>
 
-    <ion-row class="ion-margin-top" responsive="true">
-      <ion-col size="12" size-md="6" class="ion-padding-bottom">
-        <ion-button
-          expand="block"
-          style="--background: #34A853; --color: white;"
-          [routerLink]="['../monitoring']">
-          <ion-icon name="pulse-outline" slot="start"></ion-icon>
-          View Monitoring
-        </ion-button>
-      </ion-col>
-
-      <ion-col size="12" size-md="6" class="ion-padding-bottom">
-        <ion-button
-          expand="block"
-          style="--background: #4285F4; --color: white;"
-          [routerLink]="['../scan']">
-          <ion-icon name="scan-outline" slot="start"></ion-icon>
-          Scan Plant
-        </ion-button>
-      </ion-col>
-
-      <ion-col size="12" size-md="6" class="ion-padding-bottom">
-        <ion-button
-          expand="block"
-          style="--background: #FBBC05; --color: black;"
-          [routerLink]="['../prediction']">
-          <ion-icon name="bulb-outline" slot="start"></ion-icon>
-          View Predictions
-        </ion-button>
-      </ion-col>
-
-      <ion-col size="12" size-md="6">
-        <ion-button
-          expand="block"
-          style="--background: #9AA0A6; --color: white;"
-          [routerLink]="['../history']">
-          <ion-icon name="time-outline" slot="start"></ion-icon>
-          History
+     <ion-row class="ion-margin-top">
+      <ion-col size="12" size-md="6" *ngFor="let item of buttons">
+        <ion-button expand="block" class="action-button" [routerLink]="item.link">
+          <ion-icon [name]="item.icon" slot="start"></ion-icon>
+          {{ item.label }}
         </ion-button>
       </ion-col>
     </ion-row>
