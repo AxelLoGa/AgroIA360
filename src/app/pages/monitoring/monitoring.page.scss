@@ -1,7 +1,25 @@
 .page-title {
   font-size: 20px;
   font-weight: 600;
-  color: #2b8df4; 
+  color: #2b8df4;
   padding: 16px;
+  text-align: center;
+}
+
+.dato-linea {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 16px;
+}
+
+.dato-box {
+  background-color: #2b8df4;
+  color: white;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  min-width: 100px;
   text-align: center;
 }

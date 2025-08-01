@@ -1,13 +1,26 @@
 <ion-content class="ion-padding">
   <div class="page-title">Monitoreo en tiempo real</div>
+
   <ion-card>
     <ion-card-header>
-       Datos en Vivo
+      Datos en Vivo
     </ion-card-header>
+
     <ion-card-content>
-      <p>Temperatura: <strong>{{ temperatura ?? 'Cargando...' }} °C</strong></p>
-      <p>Humedad Ambiental: <strong>{{ humedadSuelo ?? 'Cargando...' }}%</strong></p>
-      <p>Humedad del Suelo: <strong>{{ phSuelo ?? 'Cargando...' }}%</strong></p>
+      <div class="dato-linea">
+        <span>Temperatura:</span>
+        <span class="dato-box">{{ datos.temperatura ?? 'Cargando...' }} °C</span>
+      </div>
+
+      <div class="dato-linea">
+        <span>Humedad Ambiental:</span>
+        <span class="dato-box">{{ datos.humedad_ambiente ?? 'Cargando...' }}%</span>
+      </div>
+
+      <div class="dato-linea">
+        <span>Humedad del Suelo:</span>
+        <span class="dato-box">{{ datos.humedad_tierra ?? 'Cargando...' }}%</span>
+      </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -9,11 +9,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [IonApp, IonRouterOutlet, ReactiveFormsModule],
 })
 export class AppComponent {
-  constructor(private router: Router) {
-    const token = localStorage.getItem('token');
+constructor(private router: Router) {
+  const token = localStorage.getItem('token');
 
-    if(!token){
-      this.router.navigate(['/login']);
-    }
+  if (!token && this.router.url === '/' || this.router.url === '/login') {
+    this.router.navigate(['']); // redirige a Tabs → Home
   }
+}
 }

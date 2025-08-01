@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonCardTitle, IonCardSubtitle, IonCardContent, IonCard, IonCardHeader } from '@ionic/angular/standalone';
 
 
 @Component({
@@ -9,7 +9,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/a
   templateUrl: './configuration.page.html',
   styleUrls: ['./configuration.page.scss'],
   standalone: true,
-  imports: [IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardHeader, IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class ConfigurationPage implements OnInit {
 

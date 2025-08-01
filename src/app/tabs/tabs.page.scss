@@ -3,6 +3,11 @@ ion-tab-bar {
   border-top: 1px solid #e0e0e0;
   box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.04);
   padding: 0 4px;
+  padding-bottom: env(safe-area-inset-bottom); // 👍 espacio extra si lo requiere el dispositivo
+  z-index: 1000;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
 
   ion-tab-button {
     --color: #7a7a7a; // gris moderno
@@ -13,6 +18,8 @@ ion-tab-bar {
     padding: 6px 0;
     font-size: 12px;
     letter-spacing: 0.5px;
+    flex: 0 0 auto;
+    min-width: 90px;
 
     ion-icon {
       font-size: 20px;
@@ -37,4 +44,3 @@ ion-tab-bar {
     font-size: 16px;
   }
 }
-

@@ -25,4 +25,10 @@ export class ApiService {
   getMediciones(): Observable<any> {
     return this.http.get(`${this.baseUrl}/mediciones`);
   }
+  getHora(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/hora`)
+  }
+  getEstadoValvula(): Observable<any>{
+    return this.http.get(`${this.baseUrl}/estado_valvula`)
+  }
 }

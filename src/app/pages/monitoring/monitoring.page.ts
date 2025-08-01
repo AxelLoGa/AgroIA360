@@ -25,9 +25,16 @@ export class MonitoringPage implements OnInit {
   constructor(private api: ApiService) {
   addIcons({ homeOutline });
 }
+
+  datos: any = {}
+
   ngOnInit(): void {
-    this.api.getTemperatura().subscribe(data => {
-      this.temperatura = parseFloat(data.temperatura[0].temperatura);
+    this.api.getMediciones().subscribe(res => {
+      if(res.mediciones && res.mediciones.length > 0){
+        this.datos = res.mediciones[0]
+      }else{
+        console.error('No llegaron mediciones válidads: ', res)
+      }
     });
   }
 
@@ -55,5 +62,6 @@ export class MonitoringPage implements OnInit {
         console.error('Respuesta inesperada:', data);
       }
     });
+    
   }
 }

@@ -13,6 +13,11 @@ export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
 
   constructor() {
-    addIcons({ triangle, ellipse, square });
+    addIcons({ triangle, ellipse, square});
   }
+
+  ionViewDidEnter() {
+  const activeTab = document.querySelector('ion-tab-button.tab-selected');
+  activeTab?.scrollIntoView({ behavior: 'smooth', inline: 'center' });
+}
 }

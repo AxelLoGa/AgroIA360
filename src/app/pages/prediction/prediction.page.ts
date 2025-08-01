@@ -1,22 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent,IonCard, IonCardHeader, IonCardContent } from '@ionic/angular/standalone';
+import { IonContent,IonCard, IonCardHeader, IonCardContent, IonCardTitle, IonCardSubtitle } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { homeOutline } from 'ionicons/icons';
+import { PredictionService, prediccion } from 'src/app/services/prediction.service';
 
 @Component({
   selector: 'app-prediction',
   templateUrl: './prediction.page.html',
   styleUrls: ['./prediction.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCardHeader, IonCard, IonContent, CommonModule, FormsModule]
+  imports: [IonCardSubtitle, IonCardTitle, IonCardContent, IonCardHeader, IonCard, IonContent, CommonModule, FormsModule]
 })
 export class PredictionPage {
-  constructor() {
-  addIcons({ homeOutline });
+  predictions: prediccion[] = [];
+
+  constructor(private predictionService: PredictionService) { 
+  this.predictions = this.predictionService.obtenerTodas();
+  }
+  ngOnInit() {
+  this.predictions = this.predictionService.obtenerTodas();
+  console.log('Predicciones cargadas:', this.predictions);
 }
-  recommendation = 'Riego necesario en las próximas 3 horas';
-  risk = 'Alta posibilidad de enfermedad detectada';
-  explanation = 'pH bajo + humedad alta';
 }
+

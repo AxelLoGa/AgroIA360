@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'https://apiloginregister-production.up.railway.app';
 
   constructor(private http: HttpClient, private storage: Storage) {}
 
@@ -17,12 +17,12 @@ export class AuthService {
     return this.http.post(`${this.baseUrl}/login`, data);
   }
 
-  register(data: { nombre: string, email: string, password: string }): Observable<any> {
+  register(data: { username: string, email: string, password: string }): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, data);
   }
 
   async setToken(token: string) {
-    await this.storage.set('token', token);
+    localStorage.setItem('token', token);
   }
 
   async getToken() {

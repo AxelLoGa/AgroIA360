@@ -1,22 +1,20 @@
-
-
 <ion-content class="ion-padding">
-  <ion-card color="warning">
-    <ion-card-header>
-      Recomendación
-    </ion-card-header>
-    <ion-card-content>
-      <p>{{ recommendation }}</p>
-    </ion-card-content>
-  </ion-card>
+      <div class="page-title">Historial de Predicciones</div>
 
-  <ion-card color="danger">
+  <ion-card *ngFor="let pred of predictions">
+    <img [src]="'data:image/jpeg;base64,' + pred.imagen" />
     <ion-card-header>
-      Riesgo Detectado
+      <ion-card-title>{{ pred.diagnostico }}</ion-card-title>
+      <ion-card-subtitle>Riesgo: {{ pred.riesgo }} - {{ pred.fecha }}</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
-      <p>{{ risk }}</p>
-      <p>Explicación: {{ explanation }}</p>
+      <ul *ngIf="pred.recomendaciones.length > 0; else sinRecs">
+        <li *ngFor="let rec of pred.recomendaciones">{{ rec }}</li>
+      </ul>
+      <ng-template #sinRecs>
+        <p>No hay recomendaciones disponibles.</p>
+      </ng-template>
     </ion-card-content>
   </ion-card>
 </ion-content>
+

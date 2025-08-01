@@ -1,15 +1,26 @@
 <ion-content class="ion-padding">
+  <div class="scanner-overlay"></div>
+  
+  <div class="page-title">Escanea tu planta</div>
+  <div *ngIf="isLoading" class="scanner-overlay animated-pulse"></div>
+  
   <ion-button expand="block" (click)="takePhoto()" class="action-button">
-    Take Photo
+    Tomar Foto
   </ion-button>
 
-  <ion-card *ngIf="photoBase64">
-    <img [src]="'data:image/jpeg;base64,' + photoBase64" alt="Foto tomada">
-    <ion-card-content>
-      <p>Analyzing: <strong>La planta presenta indicios de estrés hídrico y manchas en las hojas que podrían estar asociadas con Phytophthora, una enfermedad fúngica común en suelos húmedos</strong></p>
-      <li>Activar riego moderado para estabilizar los niveles de humedad.</li>
-      <li>Aplicar tratamiento preventivo con fungicida biológico a base de cobre o extracto de neem.</li>
-      <li>Monitorear temperatura y humedad ambiental durante las próximas 24 horas.</li>
-    </ion-card-content>
-  </ion-card>
+<ion-card *ngIf="photoBase64">
+  <div class="scanner-container">
+    <img [src]="'data:image/jpeg;base64,' + photoBase64" class="photo-preview" />
+    <div *ngIf="isLoading" class="scanner-line"></div>
+  </div>
+
+  <ion-card-content *ngIf="diagnosis || risk || recomendations">
+    <p><strong>Diagnóstico:</strong> {{ diagnosis }}</p>
+    <p><strong>Riesgo:</strong> {{ risk }}</p>
+    <p><strong>Recomendación:</strong> {{ recomendations }}</p>
+  </ion-card-content>
+
+</ion-card>
+
+
 </ion-content>

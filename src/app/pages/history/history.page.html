@@ -1,10 +1,46 @@
 <ion-content class="ion-padding">
-  <ion-list>
-    <ion-item *ngFor="let item of history">
-      <ion-label>
-        <h3>{{ item.date }} - {{ item.action }}</h3>
-        <p>{{ item.details }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div class="page-title">Historial</div>
+
+  <ion-item>
+    <ion-label>Cantidad de mediciones</ion-label>
+    <ion-select [(ngModel)]="cantidadVisible" (ionChange)="actualizarGrafico()">
+      <ion-select-option value="1">Última</ion-select-option>
+      <ion-select-option value="5">Últimas 5</ion-select-option>
+      <ion-select-option value="10">Últimas 10</ion-select-option>
+      <ion-select-option value="20">Últimas 20</ion-select-option>
+      <ion-select-option value="30">Últimas 30</ion-select-option>
+      <ion-select-option value="40">Últimas 40</ion-select-option>
+      <ion-select-option value="all">Todas</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <!-- Temperatura -->
+  <ion-card>
+    <ion-card-header><strong>Temperatura (°C)</strong></ion-card-header>
+    <canvas baseChart
+      [data]="chartTemperaturaData"
+      [options]="lineChartOptions"
+      type="line">
+    </canvas>
+  </ion-card>
+
+  <!-- Humedad -->
+  <ion-card>
+    <ion-card-header><strong>Humedad Ambiente (%)</strong></ion-card-header>
+    <canvas baseChart
+      [data]="chartHumedadData"
+      [options]="lineChartOptions"
+      type="line">
+    </canvas>
+  </ion-card>
+
+  <!-- Humedad de Suelo -->
+  <ion-card>
+    <ion-card-header><strong>Humedad del Suelo (%)</strong></ion-card-header>
+    <canvas baseChart
+      [data]="chartHumedadSueloData"
+      [options]="lineChartOptions"
+      type="line">
+    </canvas>
+  </ion-card>
 </ion-content>

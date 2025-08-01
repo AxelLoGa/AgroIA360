@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton, IonItem, IonLabel, IonInput } from '@ionic/angular/standalone';
-import { IonicStorageModule } from '@ionic/storage-angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
+import { IonicStorageModule } from '@ionic/storage-angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { IonInput } from '@ionic/angular';
+import { ViewChild, ElementRef } from '@angular/core';
+
 
 
 @Component({
@@ -13,29 +15,67 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
   standalone: true,
-  imports: [IonLabel,IonInput, IonItem, IonButton, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonicStorageModule, ReactiveFormsModule, RouterModule]
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    IonicModule,
+    IonicStorageModule
+  ]
+  
 })
+  
 export class LoginPage {
-  loginForm: FormGroup;
+  correoLogin: string = '';
+  password: string = '';
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
+  @ViewChild('correoInput', { static: false }) correoInput!: IonInput;
+
+
+
+  constructor(private auth: AuthService, private router: Router) {}
+
+
+  ionViewDidEnter() {
+    // Reintenta el enfoque si el input aún no está listo
+    this.enfocarInputSeguro(10);
   }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      this.auth.login(this.loginForm.value).subscribe({
-        next: async res => {
-          console.log('Respuesta del backend:', res);
-          await this.auth.setToken(res.token);
-          localStorage.setItem('nombre', res.nombre || 'Usuario');
-          this.router.navigate(['/home']);
-        },
-        error: () => alert('Correo o contraseña incorrectos')
+      private enfocarInputSeguro(reintentos: number) {
+      if (!this.correoInput || reintentos <= 0) {
+        console.warn('No se pudo enfocar el input');
+        return;
+      }
+
+      this.correoInput.getInputElement().then(input => {
+        if (input) {
+          input.focus();
+          console.log('Input enfocado correctamente');
+        } else {
+          setTimeout(() => this.enfocarInputSeguro(reintentos - 1), 100);
+        }
+      }).catch(() => {
+        setTimeout(() => this.enfocarInputSeguro(reintentos - 1), 100);
       });
     }
+
+
+
+
+  onSubmit() {
+    if (!this.correoLogin || !this.password) {
+      alert('Por favor ingresa tu correo y contraseña');
+      return;
+    }
+
+    this.auth.login({ email: this.correoLogin, password: this.password }).subscribe({
+      next: async res => {
+        console.log('Respuesta del backend:', res);
+        await this.auth.setToken(res.token);
+        localStorage.setItem('nombre', res.nombre || 'Usuario');
+        this.router.navigate(['/home']);
+      },
+      error: () => alert('Correo o contraseña incorrectos')
+    });
   }
 }

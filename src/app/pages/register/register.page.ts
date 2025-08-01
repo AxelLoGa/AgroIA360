@@ -8,32 +8,58 @@ import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, IonicModule, ReactiveFormsModule, RouterModule],
+  imports: [
+    CommonModule,
+    IonicModule,
+    ReactiveFormsModule,
+    RouterModule
+  ],
   templateUrl: './register.page.html',
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage {
   registerForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router
+  ) {
     this.registerForm = this.fb.group({
-      nombre: ['', Validators.required],
+      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
+
+      
     });
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
-      this.auth.register(this.registerForm.value).subscribe({
+      console.log('Formulario válido:', this.registerForm.valid);
+      console.log('Valores:', this.registerForm.value);
+
+      const payload = {
+        username: this.registerForm.value.username,
+        email: this.registerForm.value.email,
+        password: this.registerForm.value.password
+      };
+
+      console.log('Payload:', payload);
+
+      this.auth.register(payload).subscribe({
         next: () => {
           alert('Usuario registrado');
           this.router.navigate(['/login']);
         },
-        error: () => {
-          alert('Error al registrar');
+        error: (err) => {
+          console.error('Error al registrar:', err);
+          console.log('Mensaje del backend:', err.error);
+          alert(err.error?.message || 'Error al registrar');
         }
       });
+    } else {
+      alert('Por favor completa todos los campos correctamente');
     }
   }
 }
